@@ -69,6 +69,7 @@
   - [`/ignore`](#ignore)
     - [`GET` - Show table of ignored users](#get---show-table-of-ignored-users)
 - [MQTT](#mqtt)
+    - [Spinning up the bot](#spinning-up-the-bot)
 
 # Bot
 ## `!announce` - Announcements
@@ -321,3 +322,24 @@ All Stream related MQTT topics are prefixed with `stream/`
 - `mqtttest` TwitchBot sends string of args given
 - `first_time_chatter` TwitchBot sends json `{"author":"author name", "timestamp"=str(datetime.now())}` when a new chatter is seen ever.
 - `new_chatter_topic` TwitchBot sends json `{"author":"author name", "timestamp"=str(datetime.now())}` when a new chatter is seen for the first time this stream.
+
+
+
+### Spinning up the bot
+Bot runs on docker
+You must have a handful of files existing before launching the bot
+mqtt needs its passwd file preferably with a login
+traefik needs its acme.json file
+mysql needs a root password set, Then on the container starting you need to make the database it will use. A web user needs to be made, Then its permissions manually set to admin in the Database. 
+
+OauthURLs needs to be set for things
+twitchbot https://{web_url}/twitch/oauth/process.html
+TwitchPubSub Same Url but you use the streamer account
+DiscordLogin https://{web_url}/callback
+DropBox I need to figure this out still
+
+Configs, First bot run will make a handful of configs. 
+Currently mysql has 2 configs, Edit them both for user and password
+.env template needs to get copied and have stuff edited.  Env=dev gives sudo on Docker containers
+
+

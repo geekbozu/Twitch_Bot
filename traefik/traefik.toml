@@ -28,5 +28,5 @@ format = "common"
 
 [certificatesResolvers.letsencrypt.acme]
   storage= "acme.json"
-  [certificatesResolvers.letsencrypt.acme.httpChallenge]
-    entryPoint = "web"
+  [certificatesResolvers.letsencrypt.acme.tlsChallenge]
+
